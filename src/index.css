@@ -22,6 +22,30 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
+  /* Slide-up animation for individual words in hero heading */
+  .word-slide {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(16px);
+    will-change: transform, opacity;
+    animation-name: slideUp;
+    animation-duration: 0.7s;
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); /* smoother ease-out */
+    animation-fill-mode: forwards;
+  }
+
+  /* Line-by-line slide for subtext */
+  .line-slide {
+    display: block;
+    opacity: 0;
+    transform: translateY(12px);
+    will-change: transform, opacity;
+    animation-name: slideUp;
+    animation-duration: 0.7s;
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-fill-mode: forwards;
+  }
 }
 
 @keyframes fadeInUp {
@@ -29,4 +53,54 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animated mixed glow behind tile */
+.glow-yellow, .glow-green {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24rem; /* w-96 */
+  height: 8rem; /* h-32 */
+  border-radius: 9999px;
+  filter: blur(40px);
+  mix-blend-mode: screen;
+  opacity: 0.12; /* reduced brightness */
+}
+
+.glow-yellow {
+  background: rgba(255,255,255,1); /* white */
+  animation: glowFloatY 6s ease-in-out infinite alternate;
+}
+
+.glow-green {
+  background: rgba(34,197,94,1); /* green-500 */
+  animation: glowFloatG 5.2s ease-in-out infinite alternate;
+}
+
+@keyframes glowFloatY {
+  0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 0.12; }
+  50% { transform: translateX(-48%) translateY(-6px) scale(1.02); opacity: 0.18; }
+  100% { transform: translateX(-52%) translateY(2px) scale(0.98); opacity: 0.10; }
+}
+
+@keyframes glowFloatG {
+  0% { transform: translateX(-50%) translateY(2px) scale(1); opacity: 0.10; }
+  40% { transform: translateX(-46%) translateY(-8px) scale(1.03); opacity: 0.16; }
+  100% { transform: translateX(-54%) translateY(4px) scale(0.96); opacity: 0.08; }
 }

@@ -5,25 +5,54 @@ const Hero = () => {
     <section className="pt-0 pb-16 bg-black min-h-screen relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* White glow effect in the center of the tile */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-96 h-32 bg-white opacity-20 blur-3xl rounded-full" style={{top: '150px'}}></div>
-        
-        {/* Transparent blur tile extending from tagline to top */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-96 h-48 bg-white bg-opacity-5 backdrop-blur-lg rounded-lg" style={{top: '75px'}}>
+    {/* Very subtle green light in bottom left corner */}
+  <div className="absolute w-20 h-20 bg-green-400 opacity-10 blur-2xl rounded-full" style={{top: '330px', left: 'calc(50% - 168px)'}}></div>
+
+    {/* Transparent blur tile extending from tagline to top */}
+  <div className="absolute left-1/2 transform -translate-x-1/2 w-96 h-48 bg-white bg-opacity-5 backdrop-blur-lg rounded-lg" style={{top: '125px'}}>
+      {/* Mixed yellow + green glow centered in the tile */}
+      <div style={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}} aria-hidden>
+  <div className="glow-yellow" style={{position: 'relative', top: 0}}></div>
+  <div className="glow-green" style={{position: 'relative', top: 0}}></div>
+      </div>
           {/* Inner rectangular tile */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-16 bg-black bg-opacity-30 backdrop-blur-md rounded-full flex items-center justify-center" style={{width: '200px'}}>
+            {/* Profile image placed in the left corner of the inner tile (from public/pfp.jpg) */}
+            <img src="/pfp.jpg" alt="profile" className="h-12 w-12 rounded-full object-cover absolute left-3" style={{top: '50%', transform: 'translateY(-50%)'}} />
+            {/* Small label text inside the same inner tile, positioned right of the image */}
+            <span className="text-sm text-white absolute" style={{left: '68px', top: '50%', transform: 'translateY(-50%)'}}>Cat is selected at Apple</span>
           </div>
         </div>
         
         <div className="flex items-center justify-center min-h-screen">
-          <div className="text-center max-w-4xl relative z-10" style={{marginTop: '220px'}}>
+          <div className="text-center max-w-4xl relative z-10" style={{marginTop: '270px'}}>
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-white mb-8 tracking-wide">
-              Confidence starts with practice that <span className="font-serif italic font-normal text-white">feels real</span>.
+              {"Confidence starts with practice that feels real.".split(' ').map((word, i) => {
+                // keep punctuation attached but still animate; add a tiny stagger
+                const delay = `${i * 60}ms`;
+                const clean = word.replace(/[.,!?]/g, '');
+                const isFeelsReal = clean.toLowerCase() === 'feels' || clean.toLowerCase() === 'real';
+                return (
+                  <span key={i} className={`word-slide ${isFeelsReal ? 'font-serif italic font-normal text-white' : ''}`} style={{animationDelay: delay, marginRight: '6px'}}>
+                    {word}
+                  </span>
+                );
+              })}
             </h2>
             <p className="text-lg text-gray-300 mb-10 leading-relaxed max-w-3xl mx-auto">
-              Praxis makes interview prep simple and effective. AI questions, real-time feedback, and progress insights.
+              {(() => {
+                const words = "Confidence starts with practice that feels real.".split(' ');
+        const headingDelayTotal = words.length * 60; // ms
+        const startDelay = headingDelayTotal + 80; // smaller buffer after heading
+                return (
+                  <>
+          <span className="line-slide" style={{animationDelay: `${startDelay}ms`}}>Praxis makes interview prep simple and effective.</span>
+          <span className="line-slide" style={{animationDelay: `${startDelay + 80}ms`}}>AI questions, real-time feedback, and progress insights.</span>
+                  </>
+                );
+              })()}
             </p>
-            <button className="bg-white text-black px-6 py-3 rounded-lg text-base font-semibold hover:bg-gray-200 transition-colors shadow-lg">
+            <button className="text-black px-6 py-3 rounded-full text-base font-semibold hover:bg-opacity-90 transition-colors shadow-lg" style={{backgroundColor: '#FAFE88'}}>
               Try Praxis
             </button>
           </div>
