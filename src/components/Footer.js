@@ -1,23 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 const Footer = () => {
-  const typeRef = useRef(null);
-
-  useEffect(() => {
-    const el = typeRef.current;
-    if (!el) return;
-
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          el.classList.add('play');
-        }
-      });
-    }, { threshold: 0.5 });
-
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
 
   return (
   <footer id="contact" className="bg-black text-white py-16 relative">
@@ -71,7 +54,7 @@ const Footer = () => {
         
         {/* copyright placed on top of the rectangle */}
         <div className="relative z-50 flex items-center justify-center mt-8" style={{ height: '88px' }}>
-          <span ref={typeRef} className="typewriter" aria-hidden={false} id="praxis-typewriter">𝓟𝓻𝓪𝔁𝓲𝓼</span>
+          <span className="typewriter" id="praxis-typewriter">𝓟𝓻𝓪𝔁𝓲𝓼</span>
         </div>
 
   <div className="mt-6 pt-8 flex flex-col md:flex-row justify-between items-center relative z-50">
