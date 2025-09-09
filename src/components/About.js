@@ -51,8 +51,8 @@ const About = () => {
             </div>
           </div>
           
-          <div className="bg-gray-900 rounded-lg p-8 h-96 flex items-center justify-center border border-gray-800">
-            <p className="text-gray-400 text-lg">About Image Placeholder</p>
+          <div className="rounded-lg h-96 overflow-hidden">
+            <img src="/four.jpg" alt="four" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>

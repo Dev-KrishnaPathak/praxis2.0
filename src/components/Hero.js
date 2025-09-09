@@ -11,16 +11,27 @@ const Hero = () => {
     {/* Transparent blur tile extending from tagline to top */}
   <div className="absolute left-1/2 transform -translate-x-1/2 w-96 h-48 bg-white bg-opacity-5 backdrop-blur-lg rounded-lg" style={{top: '125px'}}>
       {/* Mixed yellow + green glow centered in the tile */}
-      <div style={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}} aria-hidden>
+    <div style={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}} aria-hidden>
   <div className="glow-yellow" style={{position: 'relative', top: 0}}></div>
-  <div className="glow-green" style={{position: 'relative', top: 0}}></div>
       </div>
+      {/* Small green accent tile in the top-right of the large blur tile */}
+      <div className="absolute" style={{top: '14px', left: '107px'}}>
+          <div className="h-6 rounded-full bg-green-500 shadow-lg flex items-center justify-center px-1.5 w-auto border border-white" aria-hidden style={{transform: 'rotate(10deg)', transformOrigin: 'center', borderWidth: '0.5px'}}>
+          <span className="text-[10px] font-bold text-black" style={{lineHeight: '1'}}>{'Cameron'}</span>
+        </div>
+        {/* small arrow head pointing inward toward the inner tile */}
+  <svg aria-hidden className="absolute" width="12" height="12" viewBox="0 0 24 24" style={{left: '43px', top: '26px', transform: 'rotate(220deg) scale(0.9)'}}>
+          <path d="M12 2 L19 21 L12 17 L5 21 Z" fill="#059669" />
+        </svg>
+      </div>
+  {/* Arrow removed */}
+      
           {/* Inner rectangular tile */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-16 bg-black bg-opacity-30 backdrop-blur-md rounded-full flex items-center justify-center" style={{width: '200px'}}>
             {/* Profile image placed in the left corner of the inner tile (from public/pfp.jpg) */}
             <img src="/pfp.jpg" alt="profile" className="h-12 w-12 rounded-full object-cover absolute left-3" style={{top: '50%', transform: 'translateY(-50%)'}} />
             {/* Small label text inside the same inner tile, positioned right of the image */}
-            <span className="text-sm text-white absolute" style={{left: '68px', top: '50%', transform: 'translateY(-50%)'}}>Cat is selected at Apple</span>
+            <span className="text-sm text-white absolute font-semibold" style={{left: '68px', top: '50%', transform: 'translateY(-50%)'}}>Cat is selected at Apple</span>
           </div>
         </div>
         
