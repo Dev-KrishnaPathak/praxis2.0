@@ -51,7 +51,7 @@ const About = () => {
             </div>
           </div>
           
-          <div className="rounded-lg h-96 overflow-hidden">
+          <div className="rounded-lg h-96 overflow-hidden glow-prep-yellow">
             <img src="/four.jpg" alt="four" className="w-full h-full object-cover" />
           </div>
         </div>

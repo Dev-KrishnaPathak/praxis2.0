@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const Header = () => {
+const Header = ({ openDashboard }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('home');
   const [tileStyle, setTileStyle] = useState({ width: 0, transform: 'translateX(0px)' });
@@ -10,9 +10,19 @@ const Header = () => {
   const navItems = [
     { id: 'home', label: 'Home', href: '#home' },
     { id: 'how-it-works', label: 'How it works', href: '#how-it-works' },
-    { id: 'who-its-for', label: 'Who It\'s for', href: '#who-its-for' },
+    { id: 'who-its-for', label: 'Who It\'s for', href: '#about' },
     { id: 'features', label: 'Features', href: '#features' }
   ];
+
+  const smoothScrollTo = (hash) => {
+    if (!hash) return;
+    const id = hash.replace('#', '');
+    const el = document.getElementById(id);
+    if (!el) return;
+    const yOffset = -80; // offset for fixed header
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     const activeElement = navRefs.current[activeTab];
@@ -59,6 +69,7 @@ const Header = () => {
                   onClick={(e) => {
                     e.preventDefault();
                     setActiveTab(item.id);
+                    smoothScrollTo(item.href);
                   }}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 relative z-10 ${
                     activeTab === item.id 
@@ -73,7 +84,7 @@ const Header = () => {
           </div>
 
           <div className="ml-auto hidden md:flex items-center">
-            <button className="rounded-full px-6 py-3 border border-white border-opacity-20 flex items-center gap-2 text-sm font-serif font-medium transition-colors hover:bg-opacity-80" style={{backgroundColor: '#FAFE88', color: 'black'}}>
+            <button onClick={() => openDashboard && openDashboard()} className="rounded-full px-6 py-3 border border-white border-opacity-20 flex items-center gap-2 text-sm font-serif font-bold transition-colors hover:bg-opacity-80" style={{backgroundColor: '#FAFE88', color: 'black'}}>
               Prep now
               <span>→</span>
             </button>
@@ -94,12 +105,12 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t">
             <nav className="flex flex-col space-y-4">
-              <a href="#features" className="text-gray-300 hover:text-white">Features</a>
-              <a href="#about" className="text-gray-300 hover:text-white">About</a>
-              <a href="#contact" className="text-gray-300 hover:text-white">Contact</a>
+              <a href="#features" onClick={(e)=>{e.preventDefault(); setIsMenuOpen(false); smoothScrollTo('#features');}} className="text-gray-300 hover:text-white">Features</a>
+              <a href="#about" onClick={(e)=>{e.preventDefault(); setIsMenuOpen(false); smoothScrollTo('#about');}} className="text-gray-300 hover:text-white">About</a>
+              <a href="#contact" onClick={(e)=>{e.preventDefault(); setIsMenuOpen(false); smoothScrollTo('#contact');}} className="text-gray-300 hover:text-white">Contact</a>
               <div className="flex flex-col space-y-2 pt-4">
                 <button className="text-white font-medium text-left">Sign In</button>
-                <button className="bg-white text-black px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                <button onClick={() => openDashboard && openDashboard()} className="bg-white text-black px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
                   Get Started
                 </button>
               </div>

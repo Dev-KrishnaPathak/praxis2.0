@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Hero = () => {
+const Hero = ({ openDashboard }) => {
   return (
-    <section className="pt-0 pb-16 bg-black min-h-screen relative">
+  <section id="home" className="pt-0 pb-16 bg-black min-h-screen relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     {/* Very subtle green light in bottom left corner */}
@@ -63,7 +63,7 @@ const Hero = () => {
                 );
               })()}
             </p>
-            <button className="text-black px-6 py-3 rounded-full text-base font-semibold hover:bg-opacity-90 transition-colors shadow-lg" style={{backgroundColor: '#FAFE88'}}>
+            <button onClick={() => openDashboard && openDashboard()} className="text-black px-6 py-3 rounded-full text-base font-semibold hover:bg-opacity-90 transition-colors shadow-lg" style={{backgroundColor: '#FAFE88'}}>
               Try Praxis
             </button>
           </div>

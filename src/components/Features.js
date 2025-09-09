@@ -52,17 +52,19 @@ const Features = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-serif italic">Stumble here, not in front of your recruiter.</h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto">Decorative tiles showcasing product highlights.</p>
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="flex items-start justify-center gap-6">
+          <div className="flex items-center justify-center gap-6">
             {/* Left panel (outside carousel) */}
-            <div className="hidden md:flex items-center w-64 justify-end">
-              <div style={{ transform: 'translateY(100px)' }} className="w-full">
-                <div className={`transition-transform duration-500 ${slideMeta[index].side === 'left' ? 'translate-x-0 opacity-100' : '-translate-x-6 opacity-0'} max-w-xs`}> 
-                  <h4 className="text-xl font-bold text-white">{slideMeta[index].title}</h4>
-                  <p className="text-gray-300 mt-2">{slideMeta[index].desc}</p>
+            <div className="hidden md:flex items-center w-64 justify-end h-full">
+              <div className="w-full overflow-hidden" style={{ height: `${slideHeight}px` }}>
+                <div className="transition-transform duration-500" style={{ transform: `translateY(-${index * slideHeight}px)`, height: `${slideMeta.length * slideHeight}px` }}>
+                  {slideMeta.map((s, i) => (
+                    <div key={i} className="max-w-xs h-[354px] flex items-center justify-end">
+                      <h4 className="text-xl font-bold text-white">{s.title}</h4>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -94,27 +96,20 @@ const Features = () => {
             </div>
 
             {/* Right panel (outside carousel) */}
-            <div className="hidden md:flex items-center w-64 justify-start">
-              <div style={{ transform: 'translateY(100px)' }} className="w-full">
-                <div className={`transition-transform duration-500 ${slideMeta[index].side === 'right' ? 'translate-x-0 opacity-100' : 'translate-x-6 opacity-0'} max-w-xs text-right`}> 
-                  <h4 className="text-xl font-bold text-white">{slideMeta[index].title}</h4>
-                  <p className="text-gray-300 mt-2">{slideMeta[index].desc}</p>
+            <div className="hidden md:flex items-center w-64 justify-start h-full">
+              <div className="w-full overflow-hidden" style={{ height: `${slideHeight}px` }}>
+                <div className="transition-transform duration-500" style={{ transform: `translateY(-${index * slideHeight}px)`, height: `${slideMeta.length * slideHeight}px` }}>
+                  {slideMeta.map((s, i) => (
+                    <div key={i} className="max-w-xs h-[354px] flex items-center justify-start">
+                      <p className="text-gray-300 mt-2">{s.desc}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Indicators */}
-          <div className="mt-6 flex justify-center gap-3">
-            {tiles.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setIndex(i)}
-                className={`w-3 h-3 rounded-full ${i === index ? 'bg-white' : 'bg-white/30'}`}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
+          {/* Indicators removed as requested */}
         </div>
       </div>
     </section>
