@@ -23,6 +23,10 @@
     transform: translateY(30px);
   }
 
+  .animate-pulse-slow {
+    animation: pulseSlow 3.6s ease-in-out infinite;
+  }
+
   /* Slide-up animation for individual words in hero heading */
   .word-slide {
     display: inline-block;
@@ -245,4 +249,29 @@
   stroke-linecap: round;
   filter: blur(3px); /* much subtler blur */
   opacity: 0.55; /* lower opacity for subtle effect */
+}
+
+@keyframes pulseSlow {
+  0% { transform: scale(0.98); opacity: 0.38; }
+  50% { transform: scale(1.01); opacity: 0.52; }
+  100% { transform: scale(0.98); opacity: 0.38; }
+}
+
+/* Code editor scrollbar styling */
+.code-scrollbar textarea, .code-scrollbar ::-webkit-scrollbar {
+  width: 10px;
+}
+.code-scrollbar textarea::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.03); /* subtle visible track */
+}
+.code-scrollbar textarea::-webkit-scrollbar-thumb {
+  background-color: #000; /* black thumb */
+  border-radius: 9999px;
+  border: 2px solid rgba(255,255,255,0.03);
+  background-clip: padding-box;
+}
+/* Firefox */
+.code-scrollbar textarea {
+  scrollbar-width: thin;
+  scrollbar-color: #000 transparent;
 }

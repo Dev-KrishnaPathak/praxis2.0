@@ -193,7 +193,7 @@ const DashboardPage = () => {
             </div>
           </div>
           {/* fourth row: performance history line chart */}
-          <div className="mt-6">
+            <div className="mt-6">
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6">
               <h4 className="text-lg font-semibold mb-4">Performance over time</h4>
               <div className="w-full flex items-center justify-center">
