@@ -1,5 +1,14 @@
 import React from 'react';
 
+/**
+ * Renders a homepage section with animated text and a button to open the dashboard.
+ * @example
+ * Hero({ openDashboard: () => console.log('Dashboard opened') })
+ * // Returns JSX for the home section with styled components and animations.
+ * @param {Object} props - Component properties.
+ * @param {Function} props.openDashboard - Callback function to open the dashboard.
+ * @returns {JSX.Element} The JSX for the home section with provided props.
+ */
 const Hero = ({ openDashboard }) => {
   return (
   <section id="home" className="pt-0 pb-16 bg-black min-h-screen relative">
