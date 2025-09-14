@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
+/**
+ * Renders the main dashboard page for the Praxis application, displaying user performance metrics and navigation links.
+ * @example
+ * DashboardPage()
+ * Returns the main structure of the Praxis dashboard with user metrics and navigational components.
+ * @param {none} None - This function does not take any arguments.
+ * @returns {JSX.Element} The dashboard page component with performance metrics, navigation links, and charts.
+ */
 const DashboardPage = () => {
   // fixed attempted count for demo
   const [attemptedCount] = useState(64);
@@ -11,6 +19,14 @@ const DashboardPage = () => {
   const [performanceHistory] = useState([55, 72, 48, 80, 60, 90, 45, 78, 63, 85]);
 
   // helper to convert history to an SVG path
+  /**
+  * Generates an SVG path data string based on performance history.
+  * @example
+  * generateSvgPathData([80, 90, 75])
+  * 'M 0.00 40.00 L 150.00 10.00 L 300.00 50.00'
+  * @param {number[]} performanceHistory - Array of performance metrics history.
+  * @returns {string} SVG path data string representing the performance history trend.
+  **/
   const historyPath = () => {
     const w = 300; // chart width in viewbox units
     const h = 80; // chart height

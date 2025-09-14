@@ -1,5 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 
+/**
+ * Renders the header component including navigation and dashboard access.
+ * @example
+ * Header({ openDashboard: myOpenDashboardFunction })
+ * Returns a JSX element for the header.
+ * @param {Object} props - Component props.
+ * @param {function} [props.openDashboard] - Function to open the dashboard when "Prep now" or "Get Started" is clicked.
+ * @returns {JSX.Element} Returns the JSX for the header component, including navigation links and dashboard access button.
+ */
 const Header = ({ openDashboard }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('home');

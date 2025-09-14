@@ -9,6 +9,14 @@ const features = [
   { icon: '⚡', title: 'Instant results', desc: 'Fast generation and quick practice.' }
 ];
 
+/**
+ * Renders a feature section with a sliding carousel of features.
+ * @example
+ * FeaturesSection() 
+ * // Returns a JSX section component with title and carousel.
+ * @param {void} - No arguments.
+ * @returns {JSX.Element} A section element containing a carousel of features.
+ */
 const Features = () => {
   const tiles = [1, 2, 3];
   const slideMeta = [

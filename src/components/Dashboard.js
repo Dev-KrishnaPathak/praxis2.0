@@ -1,5 +1,15 @@
 import React from 'react';
 
+/**
+ * Renders a dashboard modal when open is true.
+ * @example
+ * renderDashboard({ open: true, onClose: () => console.log('Closed') })
+ * // Renders the dashboard modal
+ * @param {Object} context - The context object containing function arguments.
+ * @param {boolean} context.open - Indicates if the modal should be displayed.
+ * @param {Function} context.onClose - Function to call when the modal is closed.
+ * @returns {JSX.Element|null} Returns a JSX element of the dashboard modal if open is true, otherwise null.
+ **/
 const Dashboard = ({ open, onClose }) => {
   if (!open) return null;
 

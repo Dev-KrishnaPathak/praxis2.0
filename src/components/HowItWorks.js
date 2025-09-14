@@ -1,5 +1,12 @@
 import React from 'react';
 
+/**
+ * Renders the "How it works" section for a web page, detailing the steps involved in the process.
+ * @example
+ * HowItWorksComponent()
+ * //<section>...</section>
+ * @returns {JSX.Element} A section element containing the how-it-works steps with specified titles and descriptions.
+ */
 const HowItWorks = () => {
   return (
     <section id="how-it-works" className="py-20 bg-black">

@@ -1,5 +1,12 @@
 import React from 'react';
 
+/**
+* This function returns a footer component with decorative elements, social media links, and navigation items for a webpage.
+* @example
+* generateFooter()
+* <footer>...</footer>
+* @returns {JSX.Element} A footer element containing grid layout, social media icons, and navigational links.
+**/
 const Footer = () => {
 
   return (

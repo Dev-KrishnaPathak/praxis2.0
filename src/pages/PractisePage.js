@@ -1,5 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 
+/**
+ * A React component for a practice page which generates coding questions and provides a code editor interface.
+ * 
+ * @example
+ * PractisePage()
+ * Returns a JSX element representing the page with a question generator and code editor.
+ * 
+ * @returns {JSX.Element} JSX representing the practice page interface, including a question generator and code editor.
+ */
 const PractisePage = () => {
   const [code, setCode] = useState('');
   const textareaRef = useRef(null);
@@ -14,6 +23,14 @@ const PractisePage = () => {
     }
   };
 
+  /**
+   * Simulates the loading and displays a question with a delay.
+   * @example
+   * functionName()
+   * // After 2500ms, question state is set with a new question description.
+   * @param {void} None - This function does not take any arguments.
+   * @returns {void} This function does not return any value, it sets component state.
+   */
   const generateQuestion = () => {
     // start loading, clear previous question
     setIsLoading(true);
@@ -43,6 +60,14 @@ const PractisePage = () => {
     setCode(e.target.value);
   };
 
+  /**
+   * Handles key events for ArrowUp and ArrowDown to manage cursor behavior in an empty editor.
+   * @example
+   * handleArrowKeyEvent(event)
+   * // If code is empty and ArrowDown is pressed, it creates a new line and moves the caret to the second line.
+   * @param {Object} e - The key event object that contains information about the key event, including the key pressed.
+   * @returns {void} Does not return a value; instead, it handles the event and updates the editor's state.
+   **/
   const handleKeyDown = (e) => {
     // If editor is empty, allow ArrowDown to create a blank line so caret can move
     if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && code.length === 0) {
