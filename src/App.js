@@ -10,6 +10,13 @@ import DashboardPage from './pages/DashboardPage';
 import PractisePage from './pages/PractisePage';
 import InterviewPage from './pages/InterviewPage';
 
+/**
+ * Main application component that manages client-side routing and navigation.
+ * @example
+ * App()
+ * This function doesn't take arguments and returns the main application component's JSX.
+ * @returns {JSX.Element} The JSX of the main application component, rendering different pages based on the current route.
+ */
 function App() {
   // simple client-side route state
   const [route, setRoute] = useState(window.location.pathname || '/');
