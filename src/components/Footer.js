@@ -54,7 +54,7 @@ const Footer = () => {
         
         {/* copyright placed on top of the rectangle */}
         <div className="relative z-50 flex items-center justify-center mt-8" style={{ height: '88px' }}>
-          <span className="typewriter" id="praxis-typewriter">𝓟𝓻𝓪𝔁𝓲𝓼</span>
+          <span className="footer-praxis">praxis</span>
         </div>
 
   <div className="mt-6 pt-8 flex flex-col md:flex-row justify-between items-center relative z-50">

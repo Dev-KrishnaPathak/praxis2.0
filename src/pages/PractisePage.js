@@ -7,6 +7,8 @@ const PractisePage = () => {
   const timeoutRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const [question, setQuestion] = useState(null);
+  const [correctAnswer, setCorrectAnswer] = useState(null);
+  const correctTimeoutRef = useRef(null);
 
   const handleScroll = () => {
     if (textareaRef.current && gutterRef.current) {
@@ -35,7 +37,8 @@ const PractisePage = () => {
 
   useEffect(() => {
     return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  if (correctTimeoutRef.current) clearTimeout(correctTimeoutRef.current);
     };
   }, []);
 
@@ -200,14 +203,26 @@ const PractisePage = () => {
                         <button
                           type="button"
                           onClick={() => {
-                            // simple submit action — currently just alert
-                            // future: run tests / send to backend
-                            alert('Code submitted');
-                          }}
+                              // submit: clear both question and code, show correct answer in editor
+                              setQuestion(null);
+                              setCode('');
+                              setCorrectAnswer('correct answer');
+                              if (correctTimeoutRef.current) clearTimeout(correctTimeoutRef.current);
+                              correctTimeoutRef.current = setTimeout(() => setCorrectAnswer(null), 3000);
+                            }}
                           className="px-3 py-1.5 rounded-full bg-green-500/90 text-white text-sm hover:bg-green-500/100 transition"
                         >
                           Submit
                         </button>
+                      </div>
+                    )}
+
+                    {/* show correct answer centered in editor */}
+                    {correctAnswer && (
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className="bg-black/80 p-6 rounded-lg text-white max-w-xs text-center pointer-events-auto">
+                          <div className="text-2xl font-semibold tracking-wide">{correctAnswer}</div>
+                        </div>
                       </div>
                     )}
                   </div>

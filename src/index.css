@@ -135,6 +135,31 @@
   overflow: visible;
 }
 
+/* nicer footer praxis style */
+.footer-praxis {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 48px;
+  background: linear-gradient(90deg, #111827 0%, #374151 60%, #111827 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.02);
+  letter-spacing: 0.01em;
+  transform: translateY(2px);
+}
+
+.footer-praxis::after {
+  content: '';
+  display: block;
+  margin: 8px auto 0;
+  width: 60px;
+  height: 2px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 2px;
+}
+
 /* green glow removed - only white glow keyframes remain */
 
 /* Moving button glow (reusable) */
